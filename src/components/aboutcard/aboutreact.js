@@ -1,16 +1,17 @@
 import React from "react";
 
-const aboutreact = () => {
+const Aboutreact = () => {
   return (
     <div>
+      <br />
       <h2 id="react">React</h2>
       <p>
-        Create a simple dynamic web app, easy to learn and use. ReactJS is much
-        easier to learn and use. It comes with a good supply of documentation,
-        tutorials, and training resources.
+        Created a simple dynamic web app using ReactJS. It is much easier to
+        learn and use. Comes with a good supply of documentation, tutorials, and
+        training resources.
       </p>
     </div>
   );
 };
 
-export default aboutreact;
+export default Aboutreact;

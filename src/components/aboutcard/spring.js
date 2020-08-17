@@ -1,8 +1,9 @@
 import React, { Fragment } from "react";
 
-const spring = () => {
+const Spring = () => {
   return (
     <Fragment>
+      <br />
       <h2 id="spring-boot">Spring boot</h2>
       <p>
         I've created 5 Spring boot apps Gateway, OrderService, CustomerService,
@@ -59,4 +60,4 @@ const style = {
   listStyle: "circle",
 };
 
-export default spring;
+export default Spring;

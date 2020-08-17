@@ -13,6 +13,8 @@ const Navbar = () => {
           <Link to="/">Home</Link>
           <Link to="/register">Register</Link>
           <Link to="/about">About</Link>
+          <Link to="/products">Products</Link>
+          <Link to="/customers">Customers</Link>
         </li>
       </ul>
     </nav>
