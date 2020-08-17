@@ -1,19 +1,36 @@
 import React, { Fragment } from "react";
+import AboutReact from "../aboutcard/aboutreact";
+import { HashLink as Link } from "react-router-hash-link";
 import Spring from "../aboutcard/spring";
+import SystemImage from "../../images/System.png";
+import Lightbox from "react-awesome-lightbox";
+import "react-awesome-lightbox/build/style.css";
+//react-awesome-lightbox
+var isOpen = false;
+
+const handleEvent = (e) => {
+  e.preventDefault();
+  isOpen = true;
+  console.log(isOpen);
+};
 
 const about = () => {
   return (
     <Fragment>
       <h1> About this app </h1>
-      <p>Simple shopping app</p>
-      <br />
 
-      <h3>Technology used on this project </h3>
-      <br />
+      <button onClick={handleEvent}>{isOpen ? "On" : "Off"}</button>
+
+      <h3>Technology used in project </h3>
+
       <div className="container">
         <ul style={style}>
-          <li>React - FrontEnd</li>
-          <li>Spring Boot - Web services</li>
+          <li>
+            <Link to="#react">React - FrontEnd</Link>
+          </li>
+          <li>
+            <Link to="#spring-boot">Spring Boot - Web services</Link>
+          </li>
           <li>Jenkins - Manage CI/CD</li>
           <li>RabbitMQ - Asynchronous Message </li>
           <li>Redis - Cached-Aside Pattern </li>
@@ -24,6 +41,7 @@ const about = () => {
         </ul>
       </div>
       <br />
+      <AboutReact />
       <Spring />
     </Fragment>
   );
@@ -35,3 +53,19 @@ const style = {
 };
 
 export default about;
+
+/*
+<div>
+        {isOpen && (
+          <Lightbox
+            image={SystemImage}
+            title="System Design"
+            onClose={() => {
+              isOpen = false;
+              console.log(isOpen);
+            }}
+          />
+        )}
+      </div>
+
+*/

@@ -3,12 +3,12 @@ import React, { Fragment } from "react";
 const spring = () => {
   return (
     <Fragment>
-      <h2>Spring boot</h2>
+      <h2 id="spring-boot">Spring boot</h2>
       <p>
         I've created 5 Spring boot apps Gateway, OrderService, CustomerService,
         ProductService and AuthService as microservices.{" "}
       </p>
-      <br />
+
       <div className="container">
         <ul style={style}>
           <li>
@@ -20,28 +20,25 @@ const spring = () => {
             AuthService - Implement backend security , JWT implementation{" "}
           </li>
           <li>
-            CustomerService - Customer Relationship Management * PSA contains
-            ShoppingCart
+            <a
+              href="http://arvent.co/customer-service/swagger-ui.html"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              CustomerService{" "}
+            </a>
+            - Customer Relationship Management * PSA contains ShoppingCart - sms
+            verification login register
           </li>
           <li>ProductService - Product Relationship Management</li>
           <li>OrderService - Order Relationship Management</li>
         </ul>
-        <ul>
-          <li>
-            <a
-              href="http://arvent.co/customer-service/swagger-ui.html"
-              target="_blank"
-            >
-              Customer API end points{" "}
-            </a>
-          </li>
-        </ul>
       </div>
-      <br />
+
       <p>
         In my spring boot application, I have organize my directories as such.
       </p>
-      <br />
+
       <div className="container">
         <ul style={style}>
           <li>config (Configuration)</li>
