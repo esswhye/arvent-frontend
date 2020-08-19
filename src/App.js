@@ -7,6 +7,7 @@ import About from "./components/pages/About";
 import Products from "./components/pages/Products";
 import Customers from "./components/pages/Customers";
 import CustomerState from "./context/customer/CustomerState";
+import CustomerDetail from "./components/pages/CustomerDetail";
 
 function App() {
   return (
@@ -20,6 +21,11 @@ function App() {
               <Route exact path="/about" component={About} />
               <Route exact path="/products" component={Products} />
               <Route exact path="/customers" component={Customers} />
+              <Route
+                exact
+                path="/customer/:userName"
+                component={CustomerDetail}
+              />
             </Switch>
           </div>
         </div>
