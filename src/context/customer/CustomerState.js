@@ -4,13 +4,14 @@ import axios from "axios";
 import CustomerContext from "./customerContext";
 import CustomerReducer from "./customerReducer";
 
-import { GET_ALL_USERS, GET_USER, SET_LOADING } from "../../types";
+import { GET_ALL_USERS, GET_USER, SET_LOADING, GET_IMAGE } from "../../types";
 
 const CustomerState = (props) => {
   const initialState = {
     users: [],
     user: {},
     loading: false,
+    customerDP: document.createElement("IMG"),
   };
 
   const [state, dispatch] = useReducer(CustomerReducer, initialState);
@@ -31,6 +32,37 @@ const CustomerState = (props) => {
     dispatch({ type: GET_ALL_USERS, payload: res.data });
   };
 
+  const getImageFromId = async (id) => {
+    //setLoading();
+
+    const res = await axios.get(
+      `http://arvent.co/customer-service/customer/image/download/${id}`
+    );
+
+    dispatch({ type: GET_IMAGE, payload: res.data });
+  };
+
+  const uploadCustomerImage = async (id, formData) => {
+    axios
+      .post(
+        `http://arvent.co/customer-service/customer/image/upload/${id}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      )
+      .then(() => {
+        console.log("SUCCESSSSSSS");
+      })
+
+      .catch((err) => {
+        console.log("HELLOOOOOOOO");
+        console.log(err);
+      });
+  };
+
   const setLoading = () => {
     dispatch({ type: SET_LOADING });
   };
@@ -41,8 +73,11 @@ const CustomerState = (props) => {
         users: state.users,
         user: state.user,
         loading: state.loading,
+        customerDP: state.customerDP,
         getAllUser,
         getUser,
+        getImageFromId,
+        uploadCustomerImage,
       }}
     >
       {props.children}

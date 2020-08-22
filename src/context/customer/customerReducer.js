@@ -1,4 +1,4 @@
-import { GET_ALL_USERS, GET_USER, SET_LOADING } from "../../types";
+import { GET_ALL_USERS, GET_USER, SET_LOADING, GET_IMAGE } from "../../types";
 
 export default (state, action) => {
   switch (action.type) {
@@ -17,6 +17,13 @@ export default (state, action) => {
       return {
         ...state,
         users: action.payload,
+        loading: false,
+      };
+
+    case GET_IMAGE:
+      return {
+        ...state,
+        customerDP: action.payload,
         loading: false,
       };
     default:

@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useContext } from "react";
 import Spinner from "../layout/Spinner";
 import { Link } from "react-router-dom";
 import CustomerContext from "../../context/customer/customerContext";
+import Dropzone from "../layout/Dropzone";
 
 const CustomerDetail = ({ match }) => {
   const customerContext = useContext(CustomerContext);
@@ -13,6 +14,7 @@ const CustomerDetail = ({ match }) => {
   }, []);
 
   const {
+    id,
     firstName,
     lastName,
     emailAddress,
@@ -20,6 +22,7 @@ const CustomerDetail = ({ match }) => {
     address,
     postalCode,
     phoneNumber,
+    imageFilename,
     role,
     created_date,
     last_modified_date,
@@ -29,26 +32,33 @@ const CustomerDetail = ({ match }) => {
   //console.log(json);
 
   if (loading) return <Spinner />;
+
   return (
     <Fragment>
-      <Link to="/" className="btn btn-light">
-        Back to home
+      <Link to="/customers" className="btn btn-light">
+        Back to customers
       </Link>{" "}
       <div className="card2 grid-5">
         <div className="all-center">
-          <img
-            src="https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/other/cat_relaxing_on_patio_other/1800x1200_cat_relaxing_on_patio_other.jpg?resize=750px:*"
-            atl="DP"
-            className="round-img"
-            //style={{ width: "200px" }}
-          />
+          {String(imageFilename).length > 0 && (
+            <div>
+              {
+                // Rendering twice :(
+              }
+              <img
+                src={`http://arvent.co/customer-service/customer/image/download/${id}`}
+                atl="DP"
+                className="round-img"
+                //style={{ width: "200px" }}
+              />
+            </div>
+          )}
           <div className="card2 text-center">
             <div className="badge2 badge-primary">{role}</div>
           </div>
           <h1>
             {firstName} {lastName}
           </h1>
-
           {phoneNumber != null && String(phoneNumber).length > 0 && (
             <p> PhoneNumber: {phoneNumber}</p>
           )}
@@ -64,6 +74,7 @@ const CustomerDetail = ({ match }) => {
           <div className="badge badge-light">
             {String(last_modified_date).substring(0, 10)}
           </div>
+          <Dropzone />
         </div>
       </div>
     </Fragment>
