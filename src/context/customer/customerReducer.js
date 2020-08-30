@@ -1,4 +1,4 @@
-import { GET_ALL_USERS, GET_USER, SET_LOADING, GET_IMAGE } from "../../types";
+import { GET_ALL_USERS, GET_USER, SET_LOADING, GET_IMAGE } from "../types";
 
 export default (state, action) => {
   switch (action.type) {

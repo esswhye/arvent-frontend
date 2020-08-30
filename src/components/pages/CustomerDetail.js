@@ -40,7 +40,8 @@ const CustomerDetail = ({ match }) => {
       </Link>{" "}
       <div className="card2 grid-5">
         <div className="all-center">
-          {String(imageFilename).length > 0 && (
+          {console.log(imageFilename)}
+          {imageFilename !== null && String(imageFilename).length > 0 && (
             <div>
               {
                 // Rendering twice :(

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const ListOfCustomers = ({ user: { userName, id, role, imageFilename } }) => {
   return (
     <div className="card text-center">
-      {String(imageFilename).length > 0 && (
+      {imageFilename !== null && String(imageFilename).length > 0 && (
         <div>
           {
             //getImageFromId(id)

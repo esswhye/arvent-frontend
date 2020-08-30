@@ -4,12 +4,12 @@ import axios from "axios";
 import CustomerContext from "./customerContext";
 import CustomerReducer from "./customerReducer";
 
-import { GET_ALL_USERS, GET_USER, SET_LOADING, GET_IMAGE } from "../../types";
+import { GET_ALL_USERS, GET_USER, SET_LOADING, GET_IMAGE } from "../types";
 
 const CustomerState = (props) => {
   const initialState = {
     users: [],
-    user: {},
+    user: { img: null },
     loading: false,
     customerDP: document.createElement("IMG"),
   };
@@ -77,7 +77,7 @@ const CustomerState = (props) => {
         getAllUser,
         getUser,
         getImageFromId,
-        uploadCustomerImage,
+        //uploadCustomerImage,
       }}
     >
       {props.children}
