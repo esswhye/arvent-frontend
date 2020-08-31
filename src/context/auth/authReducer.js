@@ -12,15 +12,21 @@ import {
 export default (state, action) => {
   switch (action.type) {
     case REGISTER_SUCCESS:
-      localStorage.setItem("token", action.payload.token);
+    case LOGIN_SUCCESS:
+      var token = action.payload;
+      token = token.substring(1, token.length - 1);
+
+      localStorage.setItem("token", token);
       return {
         ...state,
-        ...action.payload,
+        //...action.payload,
         isAuthenticated: true,
         loading: false,
+        error: action.payload,
       };
 
     case REGISTER_FAIL:
+    case LOGIN_FAIL:
       localStorage.removeItem("token");
       return {
         ...state,

@@ -12,6 +12,7 @@ import CustomerState from "./context/customer/CustomerState";
 import AuthState from "./context/auth/AuthState";
 import AlertState from "./context/alerts/AlertState";
 import CustomerDetail from "./components/pages/CustomerDetail";
+import Login from "./components/pages/Login";
 
 function App() {
   return (
@@ -27,7 +28,7 @@ function App() {
                   <Route exact path="/" component={Home} />
                   <Route exact path="/about" component={About} />
                   <Route exact path="/products" component={Products} />
-
+                  <Route exact path="/login" component={Login} />
                   <Route exact path="/register" component={Register} />
 
                   <Route exact path="/customers" component={Customers} />

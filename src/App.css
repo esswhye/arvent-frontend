@@ -301,7 +301,7 @@ img {
 .badge-success,
 .alert-success {
   background: var(--success-color);
-  color: #fff;
+  color: greenyellow;
 }
 
 .btn-white,
@@ -331,6 +331,22 @@ img {
 /* Forms */
 input {
   margin: 1.2rem 0;
+}
+
+/* Animation (Add After) */
+.item-enter {
+  opacity: 0;
+}
+.item-enter-active {
+  opacity: 1;
+  transition: opacity 1000ms ease-in;
+}
+.item-exit {
+  opacity: 1;
+}
+.item-exit-active {
+  opacity: 0;
+  transition: opacity 1000ms ease-in;
 }
 
 .form-text {

@@ -64,7 +64,6 @@ const AuthState = (props) => {
         type: REGISTER_SUCCESS,
         payload: res.data,
       });
-      console.log("SUCCESS");
     } catch (err) {
       dispatch({
         type: REGISTER_FAIL,
@@ -75,8 +74,28 @@ const AuthState = (props) => {
   };
 
   // Login User
-  const login = () => {
-    console.log("login");
+  const login = async (formData) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        //Play around with headers
+        userName: formData.username,
+        password: formData.password,
+      },
+    };
+    try {
+      const res = await axios.post(
+        "http://arvent.co/customer-service/customer/login",
+        formData,
+        config
+      );
+      console.log(res.data);
+      dispatch({ type: LOGIN_SUCCESS, payload: res.data });
+      console.log("login");
+    } catch (error) {
+      console.log(error.response.data.message);
+      dispatch({ type: LOGIN_FAIL, payload: error.response.data.message });
+    }
   };
 
   // Logout

@@ -2,19 +2,28 @@ import React, { useState, useContext, useEffect } from "react";
 import AlertContext from "../../context/alerts/alertContext";
 import AuthContext from "../../context/auth/authContext";
 
-const Register = () => {
+const Register = (props) => {
   const alertContext = useContext(AlertContext);
   const authContext = useContext(AuthContext);
 
-  const { register, error, clearErrors } = authContext;
+  const { register, error, clearErrors, isAuthenticated } = authContext;
   const { setAlert } = alertContext;
 
   useEffect(() => {
-    if (error !== null) {
+    if (isAuthenticated) {
+      props.history.push("/login");
+      //setAlert("Account saved", "success");
+      //clearErrors();
+    }
+
+    if (error === "Customer saved") {
+      setAlert(error, "success");
+      clearErrors();
+    } else if (error !== null) {
       setAlert(error, "danger");
       clearErrors();
     }
-  }, [error]);
+  }, [error, isAuthenticated, props.history]);
 
   const [user, setUser] = useState({
     userName: "",
