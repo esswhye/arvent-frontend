@@ -11,6 +11,19 @@ import {
 
 export default (state, action) => {
   switch (action.type) {
+    case USER_LOADED:
+      return {
+        ...state,
+        isAuthenticated: true,
+        loading: false,
+        // user: action.payload,
+        user: {
+          id: action.payload.id,
+          role: action.payload.role,
+          username: action.payload.userName,
+        },
+      };
+
     case REGISTER_SUCCESS:
     case LOGIN_SUCCESS:
       var token = action.payload;
@@ -25,6 +38,7 @@ export default (state, action) => {
         error: action.payload,
       };
 
+    case AUTH_ERROR:
     case REGISTER_FAIL:
     case LOGIN_FAIL:
       localStorage.removeItem("token");
@@ -35,6 +49,22 @@ export default (state, action) => {
         loading: false,
         user: null,
         error: action.payload,
+        /*
+        error: {
+          status: action.payload.status,
+          message: action.payload.data.message,
+        },*/
+      };
+
+    case LOGOUT:
+      localStorage.removeItem("token");
+      return {
+        ...state,
+        token: null,
+        isAuthenticated: false,
+        loading: false,
+        user: null,
+        error: "logout successfully",
         /*
         error: {
           status: action.payload.status,

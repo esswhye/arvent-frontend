@@ -2,7 +2,7 @@ import React, { useReducer } from "react";
 import AuthContext from "./authContext";
 import authReducer from "./authReducer";
 import axios from "axios";
-
+import setAuthToken from "../../utils/setAuthToken";
 import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
@@ -22,20 +22,33 @@ const AuthState = (props) => {
     token: localStorage.getItem("token"),
     isAuthenticated: null,
     loading: true,
-    /*
-    error: {
-      status: "",
-      message: "",
-    },
-    */
     error: null,
   };
 
   const [state, dispatch] = useReducer(authReducer, initialState);
 
   // Load User
-  const loadUser = () => {
-    console.log("load user");
+  const loadUser = async () => {
+    if (localStorage.token) {
+      setAuthToken(localStorage.token);
+    }
+    try {
+      const res = await axios.get(
+        //"http://localhost:8080/customer-service/customer/userid"
+        "http://arvent.co/customer-service/customer/userid"
+      );
+      dispatch({
+        type: USER_LOADED,
+        payload: res.data,
+      });
+    } catch (err) {
+      console.log("AUTH_ERROR TRIGGERED");
+      dispatch({
+        type: AUTH_ERROR,
+        payload: err.response.data.message,
+        //payload: err.response,
+      });
+    }
   };
 
   // Register User
@@ -64,6 +77,8 @@ const AuthState = (props) => {
         type: REGISTER_SUCCESS,
         payload: res.data,
       });
+      //store into localStorage and fetch user data
+      loadUser();
     } catch (err) {
       dispatch({
         type: REGISTER_FAIL,
@@ -75,6 +90,7 @@ const AuthState = (props) => {
 
   // Login User
   const login = async (formData) => {
+    console.log(formData);
     const config = {
       headers: {
         "Content-Type": "application/json",
@@ -86,21 +102,23 @@ const AuthState = (props) => {
     try {
       const res = await axios.post(
         "http://arvent.co/customer-service/customer/login",
-        formData,
+        [],
         config
       );
-      console.log(res.data);
+      console.log(res);
       dispatch({ type: LOGIN_SUCCESS, payload: res.data });
       console.log("login");
+      //store into localStorage and fetch user data
+      loadUser();
     } catch (error) {
-      console.log(error.response.data.message);
+      console.log(error);
       dispatch({ type: LOGIN_FAIL, payload: error.response.data.message });
     }
   };
 
   // Logout
   const logout = () => {
-    console.log("logout");
+    dispatch({ type: LOGOUT });
   };
   // Clear Errors
   const clearErrors = () => {

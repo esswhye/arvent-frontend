@@ -12,20 +12,27 @@ import CustomerState from "./context/customer/CustomerState";
 import AuthState from "./context/auth/AuthState";
 import AlertState from "./context/alerts/AlertState";
 import CustomerDetail from "./components/pages/CustomerDetail";
+import setAuthToken from "./utils/setAuthToken";
 import Login from "./components/pages/Login";
+import PrivateRoute from "./components/routing/PrivateRoute";
+
+if (localStorage.Authorization) {
+  setAuthToken(localStorage.Authorization);
+  console.log("set token to header");
+}
 
 function App() {
   return (
     <AuthState>
-      <AlertState>
-        <CustomerState>
+      <CustomerState>
+        <AlertState>
           <Router>
             <div className="App">
               <Navbar />
               <div className="container">
                 <Alerts />
                 <Switch>
-                  <Route exact path="/" component={Home} />
+                  <PrivateRoute Route exact path="/" component={Home} />
                   <Route exact path="/about" component={About} />
                   <Route exact path="/products" component={Products} />
                   <Route exact path="/login" component={Login} />
@@ -41,8 +48,8 @@ function App() {
               </div>
             </div>
           </Router>
-        </CustomerState>
-      </AlertState>
+        </AlertState>
+      </CustomerState>
     </AuthState>
   );
 }
