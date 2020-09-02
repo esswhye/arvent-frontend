@@ -33,7 +33,7 @@ const CustomerState = (props) => {
   };
 
   const getImageFromId = async (id) => {
-    //setLoading();
+    //setLoading(); a
 
     const res = await axios.get(
       `https://arvent.co/customer-service/customer/image/download/${id}`

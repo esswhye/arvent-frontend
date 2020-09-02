@@ -7,7 +7,7 @@ const ListOfCustomers = ({ user: { userName, id, role, imageFilename } }) => {
       {imageFilename !== null && String(imageFilename).length > 0 && (
         <div>
           {
-            //getImageFromId(id)
+            //getImageFromId(id) lol
           }
           <img
             src={`https://arvent.co/customer-service/customer/image/download/${id}`}

@@ -94,7 +94,7 @@ const AuthState = (props) => {
     const config = {
       headers: {
         "Content-Type": "application/json",
-        //Play around with headers
+        //Play around with headers a
         userName: formData.username,
         password: formData.password,
       },
