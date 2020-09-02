@@ -10,7 +10,7 @@ const ListOfCustomers = ({ user: { userName, id, role, imageFilename } }) => {
             //getImageFromId(id)
           }
           <img
-            src={`http://arvent.co/customer-service/customer/image/download/${id}`}
+            src={`https://arvent.co/customer-service/customer/image/download/${id}`}
             atl="DP"
             className="round-img"
             //style={{ width: "200px" }}

@@ -35,7 +35,7 @@ const AuthState = (props) => {
     try {
       const res = await axios.get(
         //"http://localhost:8080/customer-service/customer/userid"
-        "http://arvent.co/customer-service/customer/userid"
+        "https://arvent.co/customer-service/customer/userid"
       );
       dispatch({
         type: USER_LOADED,
@@ -69,7 +69,7 @@ const AuthState = (props) => {
 
     try {
       const res = await axios.post(
-        "http://arvent.co/customer-service/customer/create",
+        "https://arvent.co/customer-service/customer/create",
         formData,
         config
       );
@@ -101,7 +101,7 @@ const AuthState = (props) => {
     };
     try {
       const res = await axios.post(
-        "http://arvent.co/customer-service/customer/login",
+        "https://arvent.co/customer-service/customer/login",
         [],
         config
       );

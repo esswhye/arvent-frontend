@@ -19,7 +19,7 @@ const CustomerState = (props) => {
   const getUser = async (userName) => {
     setLoading();
     const res = await axios.get(
-      `http://arvent.co/customer-service/customer/${userName}`
+      `https://arvent.co/customer-service/customer/${userName}`
     );
     dispatch({ type: GET_USER, payload: res.data });
   };
@@ -27,7 +27,7 @@ const CustomerState = (props) => {
   const getAllUser = async () => {
     setLoading();
     const res = await axios.get(
-      "http://arvent.co/customer-service/customer/all"
+      "https://arvent.co/customer-service/customer/all"
     );
     dispatch({ type: GET_ALL_USERS, payload: res.data });
   };
@@ -36,7 +36,7 @@ const CustomerState = (props) => {
     //setLoading();
 
     const res = await axios.get(
-      `http://arvent.co/customer-service/customer/image/download/${id}`
+      `https://arvent.co/customer-service/customer/image/download/${id}`
     );
 
     dispatch({ type: GET_IMAGE, payload: res.data });
@@ -45,7 +45,7 @@ const CustomerState = (props) => {
   const uploadCustomerImage = async (id, formData) => {
     axios
       .post(
-        `http://arvent.co/customer-service/customer/image/upload/${id}`,
+        `https://arvent.co/customer-service/customer/image/upload/${id}`,
         formData,
         {
           headers: {
