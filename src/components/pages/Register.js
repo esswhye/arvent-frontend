@@ -12,15 +12,14 @@ const Register = (props) => {
   useEffect(() => {
     if (isAuthenticated) {
       props.history.push("/login");
-      setAlert("Account saved", "success");
-      clearErrors();
+    
     }
-    /*
+    
     if (error === "Customer saved") {
       setAlert(error, "success");
       clearErrors();
     }
-    */ if (
+   else if (
       error !== null
     ) {
       setAlert(error, "danger");

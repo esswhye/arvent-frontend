@@ -53,6 +53,7 @@ const AuthState = (props) => {
 
   // Register User
   const register = async (formData) => {
+    setAuthToken(localStorage.token); 
     const config = {
       headers: {
         "Content-Type": "application/json",
@@ -90,7 +91,7 @@ const AuthState = (props) => {
 
   // Login User
   const login = async (formData) => {
-    console.log(formData);
+    setAuthToken(localStorage.token);
     const config = {
       headers: {
         "Content-Type": "application/json",
