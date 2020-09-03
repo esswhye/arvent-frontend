@@ -77,7 +77,7 @@ const CustomerState = (props) => {
         getAllUser,
         getUser,
         getImageFromId,
-        //uploadCustomerImage,
+        uploadCustomerImage,
       }}
     >
       {props.children}
